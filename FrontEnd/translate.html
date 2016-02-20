@@ -33,7 +33,76 @@
     <![endif]-->
 
 </head>
+
+
+
 <body id="page-top">
+
+   
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-6">
+                    <select class="form-control placeholder" id="from">
+   <option value="0">Georgian</option>
+   <option value="1">English</option>
+</select>
+
+
+  <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Georgian
+  <span class="caret"></span></button>
+  <ul class="dropdown-menu" style="text-align: center;">
+    <li><a href="#">Ancient Rome</a></li>
+    <li><a href="Georgia.html">Georgia</a></li>
+    <li><a href="#">Japan</a><li>
+    <li><a href="#">Spain</a></li>
+  </ul> -->
+
+                </div>
+
+
+            <div class="col-sm-6">
+                     <select class="form-control placeholder" id="to">
+                <option value="0">English</option>
+                <option value="1">Georgian</option>
+</select>
+            </div>
+        </div>
+    </div> 
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-6">
+                <div class="text-group">
+                    <textarea class="form-control" rows="5" id="inputlang" placeholder="Type text here yolo!!"></textarea>
+                </div>
+            </div>
+
+               
+            <div class="col-sm-6">
+                <div class="text-group">
+                    <textarea class="form-control" rows="5" id="outputlang"></textarea>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+
+       <div class="row">
+            <div class="col-sm-12">
+                <button type="button" class="btn btn-default" onclick="translate()">SUBMIT</button>
+       </div>
+
+
+
+</div>
+
+  <!-- <textarea class="form-control" rows="5" id="text" placeholder="Type Text." style="width: 80%; margin-left:auto; margin-right: auto"></textarea>
+
+  <textarea class="form-control" rows="5" id="text" style="width: 80%; margin-left:auto; margin-right: auto"></textarea> -->
+
+</div>
+
 <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -47,6 +116,18 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+
+    <script>
+    $(document).ready(function($) {
+        $.ajax({
+            url : "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160220T170148Z.b05eb3fb7980949e.2e0c6affdf46cb674d5d8d758cc89be5e3b31e27&",
+            dataType : "jsonp",
+            success : function(parsed_json) {
+                var lang = 
+            }
+        })
+    }
+
 
 </body>
 

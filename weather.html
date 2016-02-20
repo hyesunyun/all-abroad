@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+	<center>
+
+	    <meta charset="utf-8">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	    <meta name="viewport" content="width=device-width, initial-scale=1">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+
+	    <title>Weather</title>
+
+	</head>
+
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+	<script>
+	$(document).ready(function($) {
+	  $.ajax({
+	  url : "http://api.wunderground.com/api/05602c5b32f71d7b/forecast/q/zmw:00000.1.37545.json",
+	  dataType : "jsonp",
+	  success : function(parsed_json) {
+	  //var location = parsed_json['location']['city'];
+	  var forecast = parsed_json['forecast']['txt_forecast']['forecastday'];
+	  var city = "Tbilisi" ;
+	  var temp_f = parsed_json['forecast']['fcttext'];
+	  //alert("Current weather in " + city + " is: " + temp_f);
+	  for (index in forecast){
+	  	alert('Weather forecast for ' + forecast[index]['title']+ ' is ' + forecast[index]['fcttext_metric']);
+	  }
+
+	  }
+	  });
+	});
+	</script>
+
+	</html>
