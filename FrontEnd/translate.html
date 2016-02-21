@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Translate</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+
+
+<body id="page-top">
+<div class="translation">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h2 class="section-heading">Translator</h2>
+        </div>
+        </div>
+    </div>
+
+</div>
+
+   
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-6">
+                    <select class="form-control placeholder" id="from" style="margin: 10px;">
+   <option value="en">English</option>
+   <option value="ka">Georgian</option>
+</select>
+</div>
+
+
+            <div class="col-sm-6">
+                     <select class="form-control placeholder" id="to" style="margin: 10px;">
+                <option value="ka">Georgian</option>
+                <option value="en">English</option>
+</select>
+            </div>
+        </div>
+    </div> 
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-6">
+                <div class="text-group">
+                    <textarea class="form-control" rows="5" id="inputlang" placeholder="Type text here yolo!!" style="margin: 10px;"></textarea>
+                </div>
+            </div>
+
+               
+            <div class="col-sm-6">
+                <div class="text-group">
+                    <textarea class="form-control" rows="5" id="outputlang" style="margin: 10px;"></textarea>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+
+       <div class="row">
+            <div class="col-sm-12">
+                <button id="button" type="button" class="btn btn-default" style="margin: 10px;">SUBMIT</button>
+       </div>
+
+       <div class="row">
+            <p style="margin-left:10px;">Powered by Yandex.Translate</p>
+            <p style="margin-left:10px;"><a>http://translate.yandex.com/</a></p>
+       </div>
+
+
+
+</div>
+
+  <!-- <textarea class="form-control" rows="5" id="text" placeholder="Type Text." style="width: 80%; margin-left:auto; margin-right: auto"></textarea>
+
+  <textarea class="form-control" rows="5" id="text" style="width: 80%; margin-left:auto; margin-right: auto"></textarea> -->
+
+</div>
+</div>
+
+<!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+<script>
+
+button.addEventListener("click", function(){
+    $( document ).ready(function() {
+        var from = document.getElementById("from").value;
+        var to = document.getElementById("to").value;
+        var text = document.getElementById("inputlang").value;
+        console.log("button clicked second");
+        console.log("from language: "+from);
+        console.log("to language: " + to);
+        console.log("text to translate: "+text);
+    $.ajax({
+        url: "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160220T170148Z.b05eb3fb7980949e.2e0c6affdf46cb674d5d8d758cc89be5e3b31e27&lang="+from+"-"+to+"&text="+text+"&#8221",
+dataType: "jsonp",
+success: function (data) {
+    var result = "";
+result = data.text;
+document.getElementById("outputlang").innerHTML = result;
+}
+});
+});
+});
+
+
+</script>
+
+</body>
+
+</html>
