@@ -224,6 +224,21 @@
 </div>
 </section>
 
+<section class="weather">
+    <div class="weather report", id="weather">
+        <div class="col-lg-12 text-center">
+                  <h2 class="section-heading">Weather Report for Tbilisi, Georgia</h2>
+                    <hr class="primary">
+<!--         <h1><center>Weather Report</h1>
+        <hr>
+        -->
+        <p id="weather title">An Ugly Preview of the Upcoming Weather in Tbilisi, Georgia</p> 
+        <p></p>
+    </div>
+</section>
+
+
+
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter">
@@ -379,6 +394,29 @@ document.getElementById("outputlang").innerHTML = result;
 });
 });
 </script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
+    <script>
+    $(document).ready(function($) {
+      console.log(document.getElementById("weather title"));
+
+      $.ajax({
+      url : "http://api.wunderground.com/api/05602c5b32f71d7b/forecast/q/zmw:00000.1.37545.json",
+      dataType : "jsonp",
+      success : function(parsed_json) {
+      //var location = parsed_json['location']['city'];
+      var forecast = parsed_json['forecast']['txt_forecast']['forecastday'];
+      //var imageicon = parsed_json['forecast']['txt_forecast']['forecastday']['icon'];
+      var city = "Tbilisi" ;
+      //document.write("<center><b>An Ugly Preview of the Upcoming Weather in Tbilisi, Georgia</b><br><br>")
+      document.getElementById("weather title").innerHTML = ('<b>Weather Forecast for ' + forecast[0]['title']+ ':</b> ' + forecast[0]['fcttext_metric']);
+      //console.log(document.getElementsByTagName("p"));
+
+      }
+      });
+    });
+</script>
+
 
 </body>
 
