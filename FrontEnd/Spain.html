@@ -149,6 +149,81 @@
         </div>
     </section>
 
+    <section class="translator">
+    <div class="translation">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h2 class="section-heading" style="margin: 10px;">Translator</h2>
+        </div>
+        </div>
+    </div>
+
+</div>
+
+   
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-6">
+                    <select class="form-control placeholder" id="from" style="margin: 10px;">
+   <option value="es">Spanish</option>
+   <option value="en">English</option>
+</select>
+</div>
+
+
+            <div class="col-sm-6">
+                     <select class="form-control placeholder" id="to" style="margin: 10px;">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+</select>
+            </div>
+        </div>
+    </div> 
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-sm-6">
+                <div class="text-group">
+                    <textarea class="form-control" rows="5" id="inputlang" placeholder="Type text here yolo!!" style="margin: 10px;"></textarea>
+                </div>
+            </div>
+
+               
+            <div class="col-sm-6">
+                <div class="text-group">
+                    <textarea class="form-control" rows="5" id="outputlang" style="margin: 10px;"></textarea>
+                </div>
+              
+            </div>
+        </div>
+    </div>
+
+       <div class="row">
+            <div class="col-sm-12">
+                <button id="button" type="button" class="btn btn-primary99 center-block">SUBMIT</button>
+       </div>
+
+       <div class="row">
+        <div class="col-sm-12">
+            <p style="margin-top: 25px; text-align: center;">Powered by Yandex.Translate<br><a>http://translate.yandex.com/</a></br></p>
+        </div>
+       </div>
+
+
+
+</div>
+
+  <!-- <textarea class="form-control" rows="5" id="text" placeholder="Type Text." style="width: 80%; margin-left:auto; margin-right: auto"></textarea>
+
+  <textarea class="form-control" rows="5" id="text" style="width: 80%; margin-left:auto; margin-right: auto"></textarea> -->
+
+</div>
+</div>
+</section>
+
     <section class="no-padding" id="portfolio">
         <div class="container-fluid">
             <div class="row no-gutter">
@@ -246,14 +321,6 @@
         </div>
     </section>
 
-    <aside class="bg-dark">
-        <div class="container text-center">
-            <div class="call-to-action">
-                <h2>Free Download at Start Bootstrap!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
-            </div>
-        </div>
-    </aside>
 
     <section id="contact">
         <div class="container">
@@ -288,6 +355,31 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
+
+
+    <script>
+
+button.addEventListener("click", function(){
+    $( document ).ready(function() {
+        var from = document.getElementById("from").value;
+        var to = document.getElementById("to").value;
+        var text = document.getElementById("inputlang").value;
+        console.log("button clicked second");
+        console.log("from language: "+from);
+        console.log("to language: " + to);
+        console.log("text to translate: "+text);
+    $.ajax({
+        url: "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160220T170148Z.b05eb3fb7980949e.2e0c6affdf46cb674d5d8d758cc89be5e3b31e27&lang="+from+"-"+to+"&text="+text+"&#8221",
+dataType: "jsonp",
+success: function (data) {
+    var result = "";
+result = data.text;
+document.getElementById("outputlang").innerHTML = result;
+}
+});
+});
+});
+</script>
 
 </body>
 
