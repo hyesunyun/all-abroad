@@ -42,16 +42,10 @@
 	  for (index in forecast){
 	  	var tempWeather = ('\n' + '<b>Weather Forecast for ' + forecast[index]['title']+ ':</b> ' + forecast[index]['fcttext_metric'] + '<br><br>');
 	  	console.log(tempWeather);
-	  	var tempImg = forecast[index]['icon_url'];
+	  	//var tempImg = forecast[index]['icon_url'];
 	  	document.write(tempWeather);
-	  	//console.log(tempWeather);
-	  	//document.createTextNode(tempWeather);
-		//console.log($("#weather title"));//.show();
-		console.log($("#weather"));
-	  	//console.log(document.getElementById("weather title"))//.append(tempWeather);
-	  }
-	  //document.getElementById("weather")=(tempWeather);
 
+	  }
 
 	  }
 	  });
