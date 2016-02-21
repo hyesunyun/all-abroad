@@ -14,20 +14,37 @@
 
 	</head>
 
+	<div class="weather report", id="weather">
+		<h1>Weather Report</h1>
+        <hr>
+        <p id="weather title">An Ugly Preview of the Upcoming Weather in Tbilisi, Georgia</p>
+       	<!-- <img src="http://icons.wxug.com/i/c/a/partlycloudy.gif"> -->
+	</div>
+
+
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>
 	<script>
 	$(document).ready(function($) {
+	  console.log(document.getElementById("weather title"));
+
 	  $.ajax({
 	  url : "http://api.wunderground.com/api/05602c5b32f71d7b/forecast/q/zmw:00000.1.37545.json",
 	  dataType : "jsonp",
 	  success : function(parsed_json) {
 	  //var location = parsed_json['location']['city'];
 	  var forecast = parsed_json['forecast']['txt_forecast']['forecastday'];
+	  //var imageicon = parsed_json['forecast']['txt_forecast']['forecastday']['icon'];
 	  var city = "Tbilisi" ;
-	  var temp_f = parsed_json['forecast']['fcttext'];
-	  //alert("Current weather in " + city + " is: " + temp_f);
+	  document.write("<center><b>An Ugly Preview of the Upcoming Weather in Tbilisi, Georgia</b><br><br>")
+
+	  //console.log(document.getElementsByTagName("p"));
+
 	  for (index in forecast){
-	  	alert('Weather forecast for ' + forecast[index]['title']+ ' is ' + forecast[index]['fcttext_metric']);
+	  	var tempWeather = ('\n' + '<b>Weather Forecast for ' + forecast[index]['title']+ ':</b> ' + forecast[index]['fcttext_metric'] + '<br><br>');
+	  	console.log(tempWeather);
+	  	//var tempImg = forecast[index]['icon_url'];
+	  	document.write(tempWeather);
+
 	  }
 
 	  }
