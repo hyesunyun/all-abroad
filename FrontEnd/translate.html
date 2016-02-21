@@ -37,34 +37,34 @@
 
 
 <body id="page-top">
+<div class="translation">
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+            <h2 class="section-heading">Translator</h2>
+        </div>
+        </div>
+    </div>
+
+</div>
 
    
 <div class="container">
     <div class="row">
         <div class="col-sm-12">
             <div class="col-sm-6">
-                    <select class="form-control placeholder" id="from">
-   <option value="0">Georgian</option>
-   <option value="1">English</option>
+                    <select class="form-control placeholder" id="from" style="margin: 10px;">
+   <option value="en">English</option>
+   <option value="ka">Georgian</option>
 </select>
-
-
-  <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Georgian
-  <span class="caret"></span></button>
-  <ul class="dropdown-menu" style="text-align: center;">
-    <li><a href="#">Ancient Rome</a></li>
-    <li><a href="Georgia.html">Georgia</a></li>
-    <li><a href="#">Japan</a><li>
-    <li><a href="#">Spain</a></li>
-  </ul> -->
-
-                </div>
+</div>
 
 
             <div class="col-sm-6">
-                     <select class="form-control placeholder" id="to">
-                <option value="0">English</option>
-                <option value="1">Georgian</option>
+                     <select class="form-control placeholder" id="to" style="margin: 10px;">
+                <option value="ka">Georgian</option>
+                <option value="en">English</option>
 </select>
             </div>
         </div>
@@ -74,14 +74,14 @@
         <div class="col-sm-12">
             <div class="col-sm-6">
                 <div class="text-group">
-                    <textarea class="form-control" rows="5" id="inputlang" placeholder="Type text here yolo!!"></textarea>
+                    <textarea class="form-control" rows="5" id="inputlang" placeholder="Type text here yolo!!" style="margin: 10px;"></textarea>
                 </div>
             </div>
 
                
             <div class="col-sm-6">
                 <div class="text-group">
-                    <textarea class="form-control" rows="5" id="outputlang"></textarea>
+                    <textarea class="form-control" rows="5" id="outputlang" style="margin: 10px;"></textarea>
                 </div>
               
             </div>
@@ -90,7 +90,7 @@
 
        <div class="row">
             <div class="col-sm-12">
-                <button type="button" class="btn btn-default" onclick="translate()">SUBMIT</button>
+                <button id="button" type="button" class="btn btn-default" style="margin: 10px;">SUBMIT</button>
        </div>
 
 
@@ -101,6 +101,7 @@
 
   <textarea class="form-control" rows="5" id="text" style="width: 80%; margin-left:auto; margin-right: auto"></textarea> -->
 
+</div>
 </div>
 
 <!-- jQuery -->
@@ -117,17 +118,31 @@
     <!-- Custom Theme JavaScript -->
     <script src="js/creative.js"></script>
 
-    <script>
-    $(document).ready(function($) {
-        $.ajax({
-            url : "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160220T170148Z.b05eb3fb7980949e.2e0c6affdf46cb674d5d8d758cc89be5e3b31e27&",
-            dataType : "jsonp",
-            success : function(parsed_json) {
-                var lang = 
-            }
-        })
-    }
+<script>
 
+button.addEventListener("click", function(){
+    $( document ).ready(function() {
+        var from = document.getElementById("from").value;
+        var to = document.getElementById("to").value;
+        var text = document.getElementById("inputlang").value;
+        console.log("button clicked second");
+        console.log("from language: "+from);
+        console.log("to language: " + to);
+        console.log("text to translate: "+text);
+    $.ajax({
+        url: "https://translate.yandex.net/api/v1.5/tr.json/translate?key=trnsl.1.1.20160220T170148Z.b05eb3fb7980949e.2e0c6affdf46cb674d5d8d758cc89be5e3b31e27&lang="+from+"-"+to+"&text="+text+"&#8221",
+dataType: "jsonp",
+success: function (data) {
+    var result = "";
+result = data.text;
+document.getElementById("outputlang").innerHTML = result;
+}
+});
+});
+});
+
+
+</script>
 
 </body>
 
